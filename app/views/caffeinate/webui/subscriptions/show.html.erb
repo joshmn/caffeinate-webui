@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-between">
+  <div>
+    <h3><%= ::Caffeinate::Webui::Name.for(@subscription.subscriber) %></h3>
+    <p>
+      Subscribed: <%= time_ago_in_words @subscription.created_at %> ago
+    </p>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= "Active" if @subscription.subscribed? %><%= "Completed" if @subscription.ended? %><%= "Unsubscribed" if @subscription.unsubscribed? %>
+    </button>
+    <ul class="dropdown-menu">
+      <% if @subscription.subscribed? %>
+        <li><%= button_to "Unsubscribe", subscription_unsubscribe_path(@subscription), method: :post, class: "dropdown-item" if @subscription.subscribed? %></li>
+      <% else %>
+        <li>No actions</li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+  <h6 class="border-bottom pb-2 mb-0">Mailings</h6>
+  <table class="table">
+    <thead>
+    <tr>
+      <td>Mail</td>
+      <td>Status</td>
+      <td></td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @subscription.mailings.each do |mailing| %>
+      <tr>
+        <td>
+          <%= mailing.mailer_class %>#<%= mailing.mailer_action %>
+        </td>
+        <td>
+          <%= "Skipped" if mailing.skipped? %>
+          <% if @subscription.subscribed? %>
+            Sends in <%= distance_of_time_in_words_to_now(mailing.send_at) if mailing.unsent? %> from now
+            <%= time_ago_in_words(mailing.sent_at) if mailing.sent? %>
+          <% else %>
+            Unsubscribed
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

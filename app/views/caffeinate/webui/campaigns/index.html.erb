@@ -1,0 +1,19 @@
+<h2>Campaigns</h2>
+<ul>
+
+</ul>
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+  <h6 class="border-bottom pb-2 mb-0">Campaigns</h6>
+  <% @campaigns.each do |campaign| %>
+    <div class="d-flex w-100 text-muted pt-3 flex-grow-1 justify-content-between border-bottom">
+      <div class="pb-3 mb-0 ">
+        <strong class="d-block text-gray-dark"><%= link_to campaign.name, campaign_path(campaign) %></strong>
+      </div>
+      <div>
+        <%= pluralize(campaign.subscriptions.active.count, "subscription") %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

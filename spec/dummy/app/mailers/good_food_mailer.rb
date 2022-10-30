@@ -1,0 +1,1 @@
+class GoodFoodMailer < ApplicationMailer; end

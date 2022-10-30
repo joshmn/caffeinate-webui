@@ -1,0 +1,56 @@
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+  <h6 class="border-bottom pb-2 mb-0"><%= @campaign.name %></h6>
+  <table class="table">
+    <thead>
+    <tr>
+      <td>Mail</td>
+      <td>Delay</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @campaign.to_dripper.drips.each do |step| %>
+      <tr>
+        <td>
+          <%= step.options[:mailer_class] %>#<%= step.action %>
+        </td>
+        <td>
+          <%= step.options[:delay].inspect %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+  <h6 class="border-bottom pb-2 mb-0">Subscriptions</h6>
+  <table class="table">
+    <thead>
+    <tr>
+      <td>Who</td>
+      <td>Created</td>
+      <td>Status</td>
+    </tr>
+    </thead>
+    <tbody>
+    <% @subscriptions.each do |subscriber| %>
+      <tr>
+        <td>
+          <%= link_to ::Caffeinate::Webui::Name.for(subscriber.subscriber), subscription_path(subscriber) %>
+        </td>
+        <td>
+          <%= time_ago_in_words(subscriber.created_at) %> ago
+        </td>
+        <td>
+          <%= "Ended" if subscriber.ended? %>
+          <%= "Active" if subscriber.subscribed? %>
+          <%= "Unsubscribed" if subscriber.unsubscribed? %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-end">
+    <%= will_paginate @subscriptions %>
+  </div>
+</div>
