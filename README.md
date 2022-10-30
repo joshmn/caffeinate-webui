@@ -2,7 +2,14 @@
 
 Provides a simple UI to view and manage some aspects of Caffeinate.
 
-[]
+<div align="center">
+  <img width="450" src="https://github.com/joshmn/caffeinate/raw/master/logo.png" alt="Caffeinate logo" />
+</div>
+
+<div align="center">
+  <img width="450" src="https://github.com/joshmn/caffeinate-webui/raw/master/dashboard.png" alt="Caffeinate WebUI Example" />
+</div>
+
 ## Installation
 
 Add this line to your application's Gemfile:
