@@ -8,7 +8,7 @@ module Caffeinate::Webui::ApplicationHelper
     if datetime.past?
       label << "ago"
     else
-      "from now"
+      label << "from now"
     end
 
     content_tag(:abbr, label.join(" "), title: datetime)
