@@ -25,7 +25,7 @@ And then execute:
 Drop it into your routes:
 
 ```ruby
-mount Caffeinate::Webui => '/admin/caffeinate' 
+mount Caffeinate::Webui::Engine => '/admin/caffeinate' 
 ```
 
 ## Protect it
@@ -34,7 +34,7 @@ If you're using Devise, you can simply:
 
 ```ruby
 authenticate :user, ->(user) { user.admin? } do
-  mount Caffeinate::Webui => '/admin/caffeinate'
+  mount Caffeinate::Webui::Engine => '/admin/caffeinate'
 end
 ```
 

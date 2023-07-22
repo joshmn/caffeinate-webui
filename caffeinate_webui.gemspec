@@ -7,7 +7,7 @@ require 'caffeinate/webui/version'
 Gem::Specification.new do |spec|
   spec.name        = 'caffeinate_webui'
   spec.version     = Caffeinate::Webui::VERSION
-  spec.authors     = ['Josh Brody']
+  spec.authors     = ['joshmn']
   spec.email       = ['josh@josh.mn']
   spec.homepage    = 'https://github.com/joshmn/caffeinate_webui'
   spec.summary     = 'Create, manage, and send scheduled email sequences and drip campaigns from your Rails app.'

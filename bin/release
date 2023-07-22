@@ -4,8 +4,8 @@
 require_relative '../lib/caffeinate/webui/version'
 
 version = Caffeinate::Webui::VERSION
-system('gem build caffeinate-webui.gemspec')
-system("gem push caffeinate-webui-#{version}.gem")
-system("rm caffeinate-webui-#{version}.gem")
+system('gem build caffeinate_webui.gemspec')
+system("gem push caffeinate_webui-#{version}.gem")
+system("rm caffeinate_webui-#{version}.gem")
 system("git tag -a v#{version} -m 'version #{version}'")
 system("git push origin v#{version}")
