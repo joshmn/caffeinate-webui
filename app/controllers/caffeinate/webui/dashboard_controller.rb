@@ -15,7 +15,7 @@ module Caffeinate
                                                     .preload(:caffeinate_campaign, caffeinate_campaign_subscription: [:subscriber])
                                                     .merge(::Caffeinate::CampaignSubscription.active)
                                                     .order(send_at: :asc)
-                                                    .paginate(per_page: 30, page: params[:page])
+                                                    .page(params[:page]).per(30)
 
         set_page_title "Dashboard"
       end

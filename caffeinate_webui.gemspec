@@ -23,8 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'sprockets-rails'
   spec.add_dependency 'groupdate', '>= 5'
   spec.add_dependency 'chartkick', '>= 4'
-  spec.add_dependency 'will_paginate-bootstrap-style', '0.2.4'
-  spec.add_dependency 'will_paginate', '>= 3'
+  spec.add_dependency 'kaminari', '>= 1.2'
 
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'pry-rails'

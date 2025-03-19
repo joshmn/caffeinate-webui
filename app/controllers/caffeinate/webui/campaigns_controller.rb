@@ -8,7 +8,7 @@ module Caffeinate
 
       def show
         @campaign = Caffeinate::Campaign.find_by(id: params[:id])
-        @subscriptions = @campaign.caffeinate_campaign_subscriptions.preload(:subscriber).paginate(per_page: 30, page: params[:page])
+        @subscriptions = @campaign.caffeinate_campaign_subscriptions.preload(:subscriber).page(params[:page]).per(30)
         set_page_title "Viewing #{@campaign.name}"
       end
     end

@@ -15,7 +15,7 @@ module Caffeinate
         if @status
           @mailings = @mailings.public_send(@status)
         end
-        @mailings = @mailings.paginate(per_page: 30, page: params[:page])
+        @mailings = @mailings.page(params[:page]).per(30)
         set_page_title "Mailings"
 
       end
