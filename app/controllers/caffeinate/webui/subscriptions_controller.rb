@@ -9,7 +9,7 @@ module Caffeinate
         if @campaign
           @subscriptions = @subscriptions.where(caffeinate_campaign: { id: @campaign.id })
         end
-        @subscriptions = @subscriptions.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
+        @subscriptions = @subscriptions.order(created_at: :desc).page(params[:page]).per(30)
         set_page_title "Subscriptions"
       end
 
